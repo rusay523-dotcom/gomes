@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тапай, чтобы качаться!</title>
+    <style>
+        /* Фон игры */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('https://your-username.github.io/your-repo-name/background-image.png'); /* Замените на ссылку на свой фон */
+            background-size: cover;
+            padding: 20px;
+            color: white;
+        }
+
+        /* Стили персонажа */
+        #character {
+            width: 150px;
+            height: 150px;
+            background-image: url('https://your-username.github.io/your-repo-name/character-image.png'); /* Замените на ссылку на свою картинку персонажа */
+            background-size: cover;
+            border-radius: 50%;
+            margin: 20px auto;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* Кнопка для тренировки */
+        button {
+            padding: 10px 20px;
+            background-color: #008CBA;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #005f73;
+        }
+
+        /* Анимация для персонажа */
+        @keyframes grow {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Стиль текста */
+        h1 {
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Тапай, чтобы качаться!</h1>
+    <div id="character"></div>
+    <p>Сила: <span id="strength">1</span></p>
+    <p>Очки: <span id="points">0</span></p>
+
+    <button id="trainButton">Тренироваться</button>
+    <button id="energyBoost">Энергетик (Усилить на 2)</button>
+
+    <script>
+        let strength = 1;
+        let points = 0;
+        const strengthElement = document.getElementById('strength');
+        const pointsElement = document.getElementById('points');
+        const character = document.getElementById('character');
+        const trainButton = document.getElementById('trainButton');
+        const energyBoostButton = document.getElementById('energyBoost');
+
+        // Функция увеличения силы при клике на персонажа
+        character.addEventListener('click', function() {
+            strength++;  // Увеличиваем силу
+            points++;    // Увеличиваем очки
+            strengthElement.innerText = strength;
+            pointsElement.innerText = points;
+
+            // Анимация увеличения персонажа
+            character.style.animation = 'grow 0.5s ease';
+            setTimeout(() => {
+                character.style.animation = '';  // Сброс анимации
+            }, 500);
+        });
+
+        // Функция тренировки с кнопки
+        trainButton.addEventListener('click', function() {
+            strength++;
+            points++;
+            strengthElement.innerText = strength;
+            pointsElement.innerText = points;
+
+            // Анимация увеличения персонажа при тренировке
+            character.style.animation = 'grow 0.5s ease';
+            setTimeout(() => {
+                character.style.animation = '';  // Сброс анимации
+            }, 500);
+        });
+
+        // Кнопка усиления с энергетиком
+        energyBoostButton.addEventListener('click', function() {
+            strength += 2;  // Усиливаем на 2
+            points++;       // Очки +1
+            strengthElement.innerText = strength;
+            pointsElement.innerText = points;
+
+            // Анимация увеличения персонажа
+            character.style.animation = 'grow 0.5s ease';
+            setTimeout(() => {
+                character.style.animation = '';  // Сброс анимации
+            }, 500);
+        });
+    </script>
+</body>
+</html>
